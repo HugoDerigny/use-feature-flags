@@ -11,11 +11,11 @@ function useFlags({ apiServiceId, apiUrl }: UseFlagsParams): UseFlagsHook {
         })
     }, [fetchFlags, setFlags])
 
-    function isFlagOn(flagKey: string): boolean {
+    const isFlagOn: isFlagOn = flagKey => {
         return flags.find(({ key }) => key === flagKey)?.enabled ?? false
     }
 
-    function getFlag(flagKey: string): Flag | undefined {
+    const getFlag: getFlag = flagKey => {
         return flags.find(({ key }) => key === flagKey)
     }
 

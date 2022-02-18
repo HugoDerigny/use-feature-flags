@@ -1,4 +1,6 @@
 type FlagFetcher = () => Promise<Flag[]>
+type isFlagOn = (flagKey: string) => boolean
+type getFlag = (flagKey: string) => Flag | undefined
 
 interface UseFlagsParams {
     apiUrl: string

@@ -1,4 +1,6 @@
 declare type FlagFetcher = () => Promise<Flag[]>;
+declare type isFlagOn = (flagKey: string) => boolean;
+declare type getFlag = (flagKey: string) => Flag | undefined;
 interface UseFlagsParams {
     apiUrl: string;
     apiServiceId: string;
