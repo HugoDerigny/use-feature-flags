@@ -1,6 +1,6 @@
 {
   "name": "@quizeo/use-flags",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "React hooks to fetch flags from Admineo",
   "main": "dist/index",
   "keywords": [],
