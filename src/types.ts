@@ -5,6 +5,7 @@ export type getFlag = (flagKey: string) => Flag | undefined
 export interface UseFlagsParams {
     apiUrl: string
     apiServiceId: string
+    debug?: boolean
 }
 
 export interface UseFlagsHook {
