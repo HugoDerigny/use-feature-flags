@@ -14,7 +14,7 @@ function useFlags({ apiServiceId, apiUrl, debug }: UseFlagsParams): UseFlagsHook
         fetchFlags().then(setFlags).catch((error) => {
            debug && console.error('[QUIZEO-USE-FLAGS] Could not fetch flags from API.', error)
         })
-    }, [fetchFlags, setFlags])
+    }, [])
 
     const isFlagOn: isFlagOn = flagKey => {
         return flags.find(({ key }) => key === flagKey)?.enabled ?? false

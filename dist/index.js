@@ -8,7 +8,7 @@ function useFlags({ apiServiceId, apiUrl, debug }) {
         fetchFlags().then(setFlags).catch((error) => {
             debug && console.error('[QUIZEO-USE-FLAGS] Could not fetch flags from API.', error);
         });
-    }, [fetchFlags, setFlags]);
+    }, []);
     const isFlagOn = flagKey => {
         return flags.find(({ key }) => key === flagKey)?.enabled ?? false;
     };
