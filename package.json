@@ -1,11 +1,11 @@
 {
   "name": "@quizeo/use-flags",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "React hooks to fetch flags from Admineo",
   "main": "dist/index",
   "keywords": [],
   "type": "module",
-  "typings": "dist/types",
+  "types": "dist/types",
   "author": "Hugo DERIGNY <hugo.derigny@gmail.com>",
   "license": "ISC",
   "peerDependencies": {

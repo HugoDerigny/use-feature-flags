@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import { UseFlagsParams, UseFlagsHook, Flag, FlagFetcher, getFlag, isFlagOn } from './types'
 
 function useFlags({ apiServiceId, apiUrl }: UseFlagsParams): UseFlagsHook {
     const fetchFlags: FlagFetcher = () => fetch(`${apiUrl}/services/${apiServiceId}/${flags}`).then((res) => res.json())
