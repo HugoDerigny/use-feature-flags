@@ -5,11 +5,11 @@ const FlagsContext = createContext({
     isFlagOn: (key) => false,
 });
 const useFlags = () => useContext(FlagsContext);
-const FlagsProvider = ({ children, config: { apiUrl, debug, apiServiceId } }) => {
+const FlagsProvider = ({ children, config: { apiUrl, debug, apiServiceId, apiAuthorization: Authorization } }) => {
     const [flags, setFlags] = useState([]);
     const url = `${apiUrl}/services/${apiServiceId}/flags`;
     debug && console.debug('[USE-FLAGS DEBUG]', { url });
-    const fetchFlags = () => fetch(url).then((res) => res.json());
+    const fetchFlags = () => fetch(url, { headers: { Authorization } }).then((res) => res.json());
     useEffect(() => {
         fetchFlags().then(setFlags).catch((error) => {
             debug && console.error('[USE-FLAGS] Could not fetch flags from API.', error);

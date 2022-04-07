@@ -5,6 +5,7 @@ export interface UseFlagsParams {
     config: {
         apiUrl: string;
         apiServiceId: string;
+        apiAuthorization: string;
         debug?: boolean;
     };
 }

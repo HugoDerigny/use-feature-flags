@@ -9,15 +9,14 @@ const FlagsContext = createContext<UseFlagsHook>({
 
 const useFlags = () => useContext(FlagsContext);
 
-const FlagsProvider: FC<UseFlagsParams> = ({ children, config: { apiUrl, debug, apiServiceId } }) => {
+const FlagsProvider: FC<UseFlagsParams> = ({ children, config: { apiUrl, debug, apiServiceId, apiAuthorization: Authorization } }) => {
     const [flags, setFlags] = useState<Flag[]>([])
 
     const url = `${apiUrl}/services/${apiServiceId}/flags`
 
     debug && console.debug('[USE-FLAGS DEBUG]', { url })
 
-    const fetchFlags: FlagFetcher = () => fetch(url).then((res) => res.json())
-
+    const fetchFlags: FlagFetcher = () => fetch(url, { headers: { Authorization } }).then((res) => res.json())
 
     useEffect(() => {
         fetchFlags().then(setFlags).catch((error) => {
