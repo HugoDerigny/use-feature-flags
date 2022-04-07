@@ -5,7 +5,7 @@ const FlagsContext = createContext({
     isFlagOn: (key) => false,
 });
 const useFlags = () => useContext(FlagsContext);
-const FlagsProvider = ({ children, apiUrl, debug, apiServiceId }) => {
+const FlagsProvider = ({ children, config: { apiUrl, debug, apiServiceId } }) => {
     const [flags, setFlags] = useState([]);
     const url = `${apiUrl}/services/${apiServiceId}/flags`;
     debug && console.debug('[USE-FLAGS DEBUG]', { url });
