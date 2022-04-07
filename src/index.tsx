@@ -1,5 +1,5 @@
 import React, {createContext, FC, useContext, useEffect, useState} from 'react'
-import {Flag, FlagFetcher, getFlag, isFlagOn, UseFlags, UseFlagsHook, UseFlagsParams} from './types'
+import {Flag, FlagFetcher, getFlag, isFlagOn, UseFlagsHook, UseFlagsParams} from './types'
 
 const FlagsContext = createContext<UseFlagsHook>({
   flags: [],
@@ -9,7 +9,7 @@ const FlagsContext = createContext<UseFlagsHook>({
 
 const useFlags = () => useContext(FlagsContext);
 
-const FlagsProvider: FC<UseFlagsParams> = ({ children, apiUrl, debug, apiServiceId }) => {
+const FlagsProvider: FC<UseFlagsParams> = ({ children, config: { apiUrl, debug, apiServiceId } }) => {
     const [flags, setFlags] = useState<Flag[]>([])
 
     const url = `${apiUrl}/services/${apiServiceId}/flags`

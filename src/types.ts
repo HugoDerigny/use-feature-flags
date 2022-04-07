@@ -2,12 +2,12 @@ export type FlagFetcher = () => Promise<Flag[]>
 export type isFlagOn = (flagKey: string) => boolean
 export type getFlag = (flagKey: string) => Flag | undefined
 
-export type UseFlags = (params: UseFlagsParams) => UseFlagsHook
-
 export interface UseFlagsParams {
-    apiUrl: string
-    apiServiceId: string
-    debug?: boolean
+    config: {
+        apiUrl: string
+        apiServiceId: string
+        debug?: boolean
+    }
 }
 
 export interface UseFlagsHook {
