@@ -1,9 +1,15 @@
-import { useEffect, useState } from 'react';
-const useFlags = ({ apiServiceId, apiUrl, debug }) => {
+import React, { createContext, useContext, useEffect, useState } from 'react';
+const FlagsContext = createContext({
+    flags: [],
+    getFlag: (key) => undefined,
+    isFlagOn: (key) => false,
+});
+const useFlags = () => useContext(FlagsContext);
+const FlagsProvider = ({ children, apiUrl, debug, apiServiceId }) => {
+    const [flags, setFlags] = useState([]);
     const url = `${apiUrl}/services/${apiServiceId}/flags`;
     debug && console.debug('[USE-FLAGS DEBUG]', { url });
     const fetchFlags = () => fetch(url).then((res) => res.json());
-    const [flags, setFlags] = useState([]);
     useEffect(() => {
         fetchFlags().then(setFlags).catch((error) => {
             debug && console.error('[USE-FLAGS] Could not fetch flags from API.', error);
@@ -15,6 +21,6 @@ const useFlags = ({ apiServiceId, apiUrl, debug }) => {
     const getFlag = flagKey => {
         return flags.find(({ key }) => key === flagKey);
     };
-    return { flags, isFlagOn, getFlag };
+    return React.createElement(FlagsContext.Provider, { value: { flags, isFlagOn, getFlag } }, children);
 };
-export { useFlags };
+export { useFlags, FlagsProvider };
