@@ -1,17 +1,17 @@
-# @quizeo/use-flags
+# use-feature-flags
 
-/!\ Private usage only.
+> You need to use the **Feature flags API** to use this hook.
 
 ## Usage
 
 ### Install
 
-Use `npm i @quizeo/use-flags`
+Use `npm i use-feature-flags`
 
 ### Implementation
 
 ```javascript
-import { useFlags } from '@quizeo/use-flags'
+import { useFlags } from 'use-flags'
 
 function App() {
     const { flags, isFlagOn, getFlag } = useFlags({ apiUrl: '...', apiServiceToken: '...' })
