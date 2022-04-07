@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react'
-import { UseFlagsParams, UseFlagsHook, Flag, FlagFetcher, getFlag, isFlagOn } from './types'
+import {Flag, FlagFetcher, getFlag, isFlagOn, UseFlags} from './types'
 
-function useFlags({ apiServiceId, apiUrl, debug }: UseFlagsParams): UseFlagsHook {
+const useFlags: UseFlags = ({ apiServiceId, apiUrl, debug }) => {
     const url = `${apiUrl}/services/${apiServiceId}/flags`
 
-    debug && console.debug('[QUIZEO-USE-FLAGS DEBUG]', { url })
+    debug && console.debug('[USE-FLAGS DEBUG]', { url })
 
     const fetchFlags: FlagFetcher = () => fetch(url).then((res) => res.json())
 
@@ -12,7 +12,7 @@ function useFlags({ apiServiceId, apiUrl, debug }: UseFlagsParams): UseFlagsHook
 
     useEffect(() => {
         fetchFlags().then(setFlags).catch((error) => {
-           debug && console.error('[QUIZEO-USE-FLAGS] Could not fetch flags from API.', error)
+           debug && console.error('[USE-FLAGS] Could not fetch flags from API.', error)
         })
     }, [])
 
