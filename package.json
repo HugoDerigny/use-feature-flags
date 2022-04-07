@@ -1,6 +1,6 @@
 {
-  "name": "@quizeo/use-flags",
-  "version": "1.2.2",
+  "name": "use-flags",
+  "version": "1.2.3",
   "description": "React hooks to fetch flags from Feature Flags API",
   "main": "dist/index",
   "keywords": [],
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tabuleo/quizeo-use-flags.git"
+    "url": "git+https://github.com/HugoDerigny/use-feature-flags.git"
   },
   "bugs": {
-    "url": "https://github.com/Tabuleo/quizeo-use-flags/issues"
+    "url": "https://github.com/HugoDerigny/use-feature-flags.git/issues"
   },
-  "homepage": "https://github.com/Tabuleo/quizeo-use-flags#readme"
+  "homepage": "https://github.com/HugoDerigny/use-feature-flags.git#readme"
 }

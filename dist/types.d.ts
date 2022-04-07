@@ -1,6 +1,7 @@
 export declare type FlagFetcher = () => Promise<Flag[]>;
 export declare type isFlagOn = (flagKey: string) => boolean;
 export declare type getFlag = (flagKey: string) => Flag | undefined;
+export declare type UseFlags = (params: UseFlagsParams) => UseFlagsHook;
 export interface UseFlagsParams {
     apiUrl: string;
     apiServiceId: string;
