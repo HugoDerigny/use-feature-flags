@@ -23,6 +23,7 @@ function App() {
             apiUrl: 'your-self-hosted-api-url',
             apiServiceId: 'the-service-id',
             apiAuthorization: 'the-authorization-key-you-defined-in-the-api',
+            debug: true // optional, default: false
         }}
     >
         <MyComponent/>
@@ -46,45 +47,28 @@ function MyComponent() {
 
 ## Reference
 
-### flags
+```typescript
+// FlagsProvider
+interface UseFlagsParams {
+    config: {
+        apiUrl: string
+        apiServiceId: string
+        apiAuthorization: string,
+        debug?: boolean
+    }
+}
 
-List all flags that are available (on or off) for the specific service.
+// useFlags()
+interface UseFlagsHook {
+    // List all flags from the specified services
+    flags: Flag[]
+    // Return a specified flag
+    getFlag: (key: string) => Flag | undefined
+    // Return the enabled status of a specified flag
+    isFlagOn: (key: string) => boolean
+}
 
-**Property**
-
-```ts
-Array<{
-    key: string
-    enabled: boolean
-    value: string
-}>
-```
-
-### isFlagOn
-
-Function that tell if a flag is on or off.
-
-**Parameter**
-
-- `key`: *string*
-
-**Return**
-
-`true|false`
-
-
-### getFlag
-
-Function that return a flag.
-
-**Paremeter**
-
-- `key`: *string*
-
-**Return**
-
-```json
-{
+interface Flag {
     key: string
     enabled: boolean
     value: string
