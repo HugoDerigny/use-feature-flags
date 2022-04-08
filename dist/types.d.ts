@@ -17,5 +17,5 @@ export interface UseFlagsHook {
 export interface Flag {
     key: string;
     enabled: boolean;
-    variant: string;
+    value: string;
 }

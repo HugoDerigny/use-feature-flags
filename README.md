@@ -1,38 +1,50 @@
 # use-feature-flags
 
-> You need to use the **Feature flags API** to use this hook.
+> /!\ COMING SOON !!! You need to use the **Feature flags API** to use this hook.
 
 ## Usage
 
 ### Install
 
-Use `npm i use-feature-flags`
+`npm i use-feature-flags`
 
 ### Implementation
 
+> By default, if a flag cannot be fetched, it will be **false**. 
+
+> The Feature Flag API uses the **User-Agent header** from the request to determine if the user has access to the feature.
+
 ```javascript
-import { useFlags } from 'use-flags'
+import { FlagsProvider, useFlags } from 'use-feature-flags'
 
 function App() {
-    const { flags, isFlagOn, getFlag } = useFlags({ apiUrl: '...', apiServiceToken: '...' })
+    return <FlagsProvider
+        config={{
+            apiUrl: 'your-self-hosted-api-url',
+            apiServiceId: 'the-service-id',
+            apiAuthorization: 'the-authorization-key-you-defined-in-the-api',
+        }}
+    >
+        <MyComponent/>
+    </FlagsProvider>
+}
+
+function MyComponent() {
+    const { isFlagOn, flags, getFlag } = useFlags()
+
+    /**
+     * Two usages :
+     * - with getFlag(key) => returns the flag object with the value and the enabled status
+     * - with isFlagOn(key) => returns the enabled status
+     */
+    return <div>
+        {isFlagOn('my-welcome-message') && <p>{getFlag('my-welcome-message').value}</p>}
+        {isFlagOn('my-flag-key') ? <p>Hello world !</p> : <p>This feature is off</p>}
+    </div>
 }
 ```
 
 ## Reference
-
-### useFlags
-
-Function
-
-**Parameters**
-
-* Object :
-```json
-{
-    apiUrl: <string>
-    apiServiceToken`: <string>
-}
-```
 
 ### flags
 
@@ -44,7 +56,7 @@ List all flags that are available (on or off) for the specific service.
 Array<{
     key: string
     enabled: boolean
-    variant: string
+    value: string
 }>
 ```
 
@@ -75,6 +87,6 @@ Function that return a flag.
 {
     key: string
     enabled: boolean
-    variant: string
+    value: string
 }
 ```
