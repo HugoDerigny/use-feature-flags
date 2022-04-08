@@ -1,6 +1,6 @@
 {
   "name": "use-feature-flags",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "React hooks to fetch flags from Feature Flags API",
   "main": "dist/index",
   "keywords": [],
